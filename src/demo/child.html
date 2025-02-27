@@ -82,6 +82,12 @@
       showResult('发送自定义数据', data);
     };
 
+    // 监听父页面发送的数据
+    sdk.on('PARENT_DATA', (data) => {
+      alert('收到父页面数据',data);
+      showResult('收到父页面数据', data);
+    });
+
     function showResult(title, data) {
       const resultElement = document.getElementById('result');
       resultElement.innerHTML = `<pre>${title}:\n${JSON.stringify(data, null, 2)}</pre>`;
