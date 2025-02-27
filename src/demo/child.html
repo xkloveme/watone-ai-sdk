@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Page Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Child Page Demo</h1>
+  <div class="button-group">
+    <button onclick="getLoginInfo()">获取登录信息</button>
+    <button onclick="navigate()">页面导航</button>
+    <button onclick="sendCustomData()">发送数据</button>
+  </div>
+  <div id="result" class="result">
+    <pre>点击按钮测试功能...</pre>
+  </div>
+
+  <script type="module">
+    import { WatoneSDK } from '../index.ts';
+
+    const sdk = new WatoneSDK({ debug: true });
+    window.sdk = sdk;
+
+    window.getLoginInfo = async () => {
+      try {
+        const result = await sdk.getLoginInfo();
+        showResult('获取登录信息成功', result);
+      } catch (error) {
+        showResult('获取登录信息失败', error.message);
+      }
+    };
+
+    window.navigate = () => {
+      try {
+        sdk.navigate('/dashboard', { id: Date.now() });
+        showResult('发送导航请求', { url: '/dashboard', params: { id: Date.now() } });
+      } catch (error) {
+        showResult('导航请求失败', error.message);
+      }
+    };
+
+    window.sendCustomData = () => {
+      const data = {
+        timestamp: Date.now(),
+        message: '来自子页面的数据',
+        random: Math.random()
+      };
+      sdk.sendData(data);
+      showResult('发送自定义数据', data);
+    };
+
+    function showResult(title, data) {
+      const resultElement = document.getElementById('result');
+      resultElement.innerHTML = `<pre>${title}:\n${JSON.stringify(data, null, 2)}</pre>`;
+    }
+  </script>
+</body>
+</html>

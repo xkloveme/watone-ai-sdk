@@ -1,0 +1,41 @@
+{
+  "name": "watone-ai-sdk",
+  "version": "1.0.0",
+  "description": "一个用于iframe通信的轻量级SDK，支持子页面与父页面之间的安全通信",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/index.es.js",
+      "require": "./lib/index.cjs.js"
+    }
+  },
+  "main": "./lib/index.cjs.js",
+  "module": "./lib/index.es.js",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "jest",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish --access public"
+  },
+  "keywords": [
+    "iframe",
+    "communication",
+    "sdk",
+    "postMessage"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "@types/node": "^20.11.24"
+  }
+}
