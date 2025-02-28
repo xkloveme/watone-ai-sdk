@@ -1,13 +1,23 @@
 export class WatoneSDK {
   constructor(options = {}) {
     this.debug = options.debug || false;
-    this.parentOrigin = window.parent.origin;
+    // 从options中获取parentOrigin，如果没有则使用当前窗口的origin
+    this.parentOrigin = options.parentOrigin || window.location.origin;
     this.messageHandlers = new Map();
     this.initMessageListener();
   }
 
   initMessageListener() {
-    window.addEventListener('message', this.handleMessage.bind(this));
+    window.addEventListener('message', (event) => {
+      // 验证消息来源
+      if (event.origin !== this.parentOrigin) {
+        if (this.debug) {
+          console.warn('收到未知来源的消息:', event.origin);
+        }
+        return;
+      }
+      this.handleMessage(event);
+    });
   }
 
   handleMessage(event) {

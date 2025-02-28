@@ -46,7 +46,9 @@ export class ParentListener {
     if (this.debug) {
       console.log('Parent sending message:', message);
     }
-    this.childWindow.postMessage(message, '*');
+    // 获取子窗口的origin，如果无法获取则使用当前窗口的origin
+    const targetOrigin = (this.childWindow.location && this.childWindow.location.origin) || window.location.origin;
+    this.childWindow.postMessage(message, targetOrigin);
   }
 
   destroy() {
