@@ -4,7 +4,7 @@
 
 一个用于iframe通信的轻量级SDK，支持子页面与父页面之间的安全通信。
 
-## 特性
+## ✨ 特性
 
 - 🔒 安全可靠的iframe通信机制
 - 🔑 支持获取登录信息
@@ -15,7 +15,7 @@
 - 🚦 完整的错误处理和超时控制
 - 🔍 调试模式支持
 
-## 安装
+## 📦 安装
 
 ```bash
 npm install watone-ai-sdk
@@ -25,7 +25,7 @@ yarn add watone-ai-sdk
 pnpm add watone-ai-sdk
 ```
 
-## 快速开始
+## 🚀 快速开始
 
 ### 子页面集成
 
@@ -110,7 +110,7 @@ listener.sendToChild('PARENT_DATA', {
 listener.destroy();
 ```
 
-## API文档
+## 📖 API文档
 
 ### WatoneSDK
 
@@ -135,7 +135,7 @@ getLoginInfo(timeout?: number): Promise<LoginInfo>
 获取登录信息，支持超时控制。
 
 - `timeout`: 超时时间（毫秒），默认5000ms
-- 返回: Promise<LoginInfo>
+- 返回: `Promise<LoginInfo>`
 
 ##### navigate
 
@@ -233,7 +233,7 @@ destroy(): void
 
 清理资源，移除事件监听。
 
-## 消息类型
+## 📨 消息类型
 
 ### 内置消息类型
 
@@ -243,7 +243,7 @@ destroy(): void
 - `SEND_DATA`: 数据传输
 - `PARENT_DATA`: 父页面数据
 
-## 运行示例
+## 🎮 运行示例
 
 项目提供了完整的示例代码，展示了SDK的主要功能：
 
@@ -263,7 +263,7 @@ pnpm dev
 - `child.html`: 子页面示例
 - `App.vue`: Vue版本的父页面示例
 
-## 开发
+## 🛠️ 开发
 
 ```bash
 # 安装依赖
@@ -279,6 +279,6 @@ pnpm build
 pnpm test
 ```
 
-## 许可证
+## 📄 许可证
 
 MIT

@@ -135,7 +135,7 @@ getLoginInfo(timeout?: number): Promise<LoginInfo>
 Get login information with timeout control.
 
 - `timeout`: Timeout in milliseconds, defaults to 5000ms
-- Returns: Promise<LoginInfo>
+- Returns: `Promise<LoginInfo>`
 
 ##### navigate
 
