@@ -1,6 +1,6 @@
 {
   "name": "watone-ai-sdk",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "一个用于iframe通信的轻量级SDK，支持子页面与父页面之间的安全通信",
   "type": "module",
   "exports": {
