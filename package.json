@@ -25,7 +25,7 @@
     "test": "jest",
     "prepublishOnly": "npm run build",
     "release": "bumpp",
-    "publish": "npm publish --access public"
+    "publishNPM": "npm publish --access public"
   },
   "keywords": [
     "iframe",
