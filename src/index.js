@@ -1,8 +1,8 @@
 export class WatoneSDK {
   constructor(options = {}) {
     this.debug = options.debug || false;
-    // 从options中获取parentOrigin，如果没有则使用当前窗口的origin
-    this.parentOrigin = options.parentOrigin || window.location.origin;
+    // 设置目标源为 '*' 以允许跨域通信，也可以通过 options 指定特定的源
+    this.parentOrigin = options.parentOrigin || '*';
     this.messageHandlers = new Map();
     this.initMessageListener();
   }
