@@ -49,7 +49,7 @@
   </div>
 
   <script type="module">
-    import { WatoneSDK } from '../index.ts';
+    import { WatoneSDK } from '../index.js';
 
     const sdk = new WatoneSDK({ debug: true });
     window.sdk = sdk;
@@ -84,7 +84,7 @@
 
     // 监听父页面发送的数据
     sdk.on('PARENT_DATA', (data) => {
-      alert('收到父页面数据',data);
+      alert(`收到父页面数据: ${JSON.stringify(data)}`);
       showResult('收到父页面数据', data);
     });
 
