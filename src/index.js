@@ -9,13 +9,6 @@ export class WatoneSDK {
 
   initMessageListener() {
     window.addEventListener('message', (event) => {
-      // 验证消息来源
-      if (event.origin !== this.parentOrigin) {
-        if (this.debug) {
-          console.warn('收到未知来源的消息:', event.origin);
-        }
-        return;
-      }
       this.handleMessage(event);
     });
   }
