@@ -1,31 +1,21 @@
-import { MessageType, MessageData, MessageHandler } from './types';
-
-export interface ParentListenerOptions {
-  debug?: boolean;
-}
-
 export class ParentListener {
-  private debug: boolean;
-  private handlers: Map<MessageType, MessageHandler>;
-  private childWindow: Window | null;
-
-  constructor(options: ParentListenerOptions = {}) {
+  constructor(options = {}) {
     this.debug = options.debug || false;
     this.handlers = new Map();
     this.childWindow = null;
     this.initMessageListener();
   }
 
-  private initMessageListener() {
+  initMessageListener() {
     window.addEventListener('message', this.handleMessage.bind(this));
   }
 
-  private handleMessage(event: MessageEvent) {
+  handleMessage(event) {
     if (this.debug) {
       console.log('Parent received message:', event.data);
     }
 
-    const { type, data } = event.data as MessageData;
+    const { type, data } = event.data;
     const handler = this.handlers.get(type);
     if (handler) {
       handler(data, event.source);
@@ -37,22 +27,22 @@ export class ParentListener {
     }
   }
 
-  on(type: MessageType, handler: MessageHandler) {
+  on(type, handler) {
     this.handlers.set(type, handler);
     return this;
   }
 
-  off(type: MessageType) {
+  off(type) {
     this.handlers.delete(type);
     return this;
   }
 
-  sendToChild<T>(type: MessageType, data?: T) {
+  sendToChild(type, data) {
     if (!this.childWindow) {
       throw new Error('子窗口未连接');
     }
 
-    const message: MessageData<T> = { type, data };
+    const message = { type, data };
     if (this.debug) {
       console.log('Parent sending message:', message);
     }
