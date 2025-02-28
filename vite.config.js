@@ -15,7 +15,7 @@ export default defineConfig({
     outDir: 'lib',
     minify: false,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'src/index.js'),
       name: 'watone-ai-sdk',
       fileName: (format) => `index.${format}.js`,
       formats: ['es', 'cjs']
