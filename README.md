@@ -249,7 +249,7 @@ destroy(): void
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/watone-ai-sdk.git
+git clone https://github.com/xkloveme/watone-ai-sdk.git
 
 # 安装依赖
 pnpm install

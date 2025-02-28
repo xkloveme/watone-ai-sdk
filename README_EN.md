@@ -249,8 +249,7 @@ The project includes complete example code demonstrating the main SDK features:
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/watone-ai-sdk.git
-
+git clone https://github.com/xkloveme/watone-ai-sdk.git
 # Install dependencies
 pnpm install
 
