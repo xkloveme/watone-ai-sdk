@@ -9,6 +9,10 @@
       "require": "./lib/index.cjs.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xkloveme/watone-ai-sdk.git"
+  },
   "main": "./lib/index.cjs.js",
   "module": "./lib/index.es.js",
   "files": [
