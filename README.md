@@ -108,6 +108,23 @@ listener.on('GET_LOGIN_INFO', (data, source) => {
   }, '*');
 });
 
+// 处理退出登录请求
+listener.on('LOGOUT', (data, source) => {
+  try {
+    // 在这里实现退出登录的逻辑
+    // 例如：清除token、重置状态等
+    source?.postMessage({
+      type: 'LOGOUT_RESPONSE',
+      data: { success: true }
+    }, '*');
+  } catch (error) {
+    source?.postMessage({
+      type: 'LOGOUT_RESPONSE',
+      data: { success: false, error: error.message }
+    }, '*');
+  }
+});
+
 // 处理导航请求
 listener.on('NAVIGATE', (data) => {
   console.log('导航到:', data.url, '参数:', data.params);
