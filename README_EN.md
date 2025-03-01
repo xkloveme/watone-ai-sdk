@@ -1,5 +1,14 @@
 # Watone AI SDK
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/watone-ai-sdk">
+    <img src="https://img.shields.io/npm/v/watone-ai-sdk?color=orange&label=" alt="版本" />
+  </a>
+  
+  <a href="https://github.com/qmhc/watone-ai-sdk/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/watone-ai-sdk" alt="许可证" />
+  </a>
+</p>
 English | [简体中文](./README.md)
 
 A lightweight SDK for secure iframe communication between parent and child pages.
@@ -45,6 +54,14 @@ try {
   console.log('Login info:', loginInfo);
 } catch (error) {
   console.error('Failed to get login info:', error);
+}
+
+// Logout
+try {
+  await sdk.logout();
+  console.log('Logout successful');
+} catch (error) {
+  console.error('Logout failed:', error);
 }
 
 // Page navigation
@@ -136,6 +153,17 @@ Get login information with timeout control.
 
 - `timeout`: Timeout in milliseconds, defaults to 5000ms
 - Returns: `Promise<LoginInfo>`
+
+##### logout
+
+```typescript
+logout(timeout?: number): Promise<void>
+```
+
+Logout with timeout control.
+
+- `timeout`: Timeout in milliseconds, defaults to 5000ms
+- Returns: `Promise<void>`
 
 ##### navigate
 
@@ -242,6 +270,8 @@ Clean up resources and remove event listeners.
 - `NAVIGATE`: Page navigation
 - `SEND_DATA`: Data transfer
 - `PARENT_DATA`: Parent page data
+- `LOGOUT`: Logout request
+- `LOGOUT_RESPONSE`: Logout response
 
 ## Running Examples
 

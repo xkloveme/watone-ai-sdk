@@ -89,6 +89,24 @@ export class WatoneSDK {
     this.postMessage('SEND_DATA', data);
   }
 
+  logout(timeout = 5000) {
+    return new Promise((resolve, reject) => {
+      const timeoutId = setTimeout(() => {
+        this.removeMessageHandler('LOGOUT_RESPONSE', handler);
+        reject(new Error('退出登录超时'));
+      }, timeout);
+
+      const handler = (data) => {
+        clearTimeout(timeoutId);
+        this.removeMessageHandler('LOGOUT_RESPONSE', handler);
+        resolve(data);
+      };
+
+      this.addMessageHandler('LOGOUT_RESPONSE', handler);
+      this.postMessage('LOGOUT');
+    });
+  }
+
   destroy() {
     window.removeEventListener('message', this.handleMessage.bind(this));
     this.messageHandlers.clear();

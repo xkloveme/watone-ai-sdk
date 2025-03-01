@@ -1,5 +1,15 @@
 # Watone AI SDK
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/watone-ai-sdk">
+    <img src="https://img.shields.io/npm/v/watone-ai-sdk?color=orange&label=" alt="版本" />
+  </a>
+  
+  <a href="https://github.com/qmhc/watone-ai-sdk/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/watone-ai-sdk" alt="许可证" />
+  </a>
+</p>
+
 [English](./README_EN.md) | 简体中文
 
 一个用于iframe通信的轻量级SDK，支持子页面与父页面之间的安全通信。
@@ -45,6 +55,14 @@ try {
   console.log('登录信息:', loginInfo);
 } catch (error) {
   console.error('获取登录信息失败:', error);
+}
+
+// 退出登录
+try {
+  await sdk.logout();
+  console.log('退出登录成功');
+} catch (error) {
+  console.error('退出登录失败:', error);
 }
 
 // 页面导航
@@ -136,6 +154,17 @@ getLoginInfo(timeout?: number): Promise<LoginInfo>
 
 - `timeout`: 超时时间（毫秒），默认5000ms
 - 返回: `Promise<LoginInfo>`
+
+##### logout
+
+```typescript
+logout(timeout?: number): Promise<void>
+```
+
+退出登录，支持超时控制。
+
+- `timeout`: 超时时间（毫秒），默认5000ms
+- 返回: `Promise<void>`
 
 ##### navigate
 
@@ -242,6 +271,8 @@ destroy(): void
 - `NAVIGATE`: 页面导航
 - `SEND_DATA`: 数据传输
 - `PARENT_DATA`: 父页面数据
+- `LOGOUT`: 退出登录
+- `LOGOUT_RESPONSE`: 退出登录响应
 
 ## 🎮 运行示例
 
